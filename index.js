@@ -1,19 +1,18 @@
 // API 1: "https://jsonplaceholder.typicode.com/users"
-// API 2: "https://jsonplaceholder.typicode.com/posts?userId=:id"
+// API 2: " "
 const userListEl = document.querySelector('.user-list')
 
 async function main() {
     const users = await fetch("https://jsonplaceholder.typicode.com/users");
     const usersData = await users.json();
-    console.log(usersData)
     userListEl.innerHTML = usersData.map((user) => userHTML(user)).join("");
 }
 
 main();
 
 function showUserPosts(id) {
-    window.location.href = 'http://127.0.0.1:5500/user.html'
-    console.log(id)
+    localStorage.setItem("id", id)
+    window.location.href = `${window.location.origin}/user.html`
 }
 
 function userHTML(user) {
@@ -29,4 +28,3 @@ function userHTML(user) {
 </div>`
 }
 
-//11:35
